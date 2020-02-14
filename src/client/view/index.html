@@ -3,9 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Natural Language Processing app</title>
+    <link rel="stylesheet" href="../styles/base.scss">
 </head>
 <body>
+    <header>
+        <h1>Hashtag generator</h1>
+    </header>
+    <main>
+        <p>Lacking inspiration for hashtags for your next tweet? Try this generator!</p>
+        <form action="" method="POST">
+            <label for="tweet">Enter your tweet here: </label><br />
+            <textarea id="tweet"></textarea><br />
+            <input type="submit" value="Submit">
+        </form>
+        <div class="result"> <!--Hidden before submit-->
+            <div class="result-title">Your tweet</div>
+            <div class="result-text"></div>
+            <div class="result-title">Hashtags</div>
+            <div id="result" class="result-table">DAda</div><!--insert span class label dynamically-->
+        </div>
+    </main>
+    <footer>
+        <p></p>
+    </footer>
     
 </body>
 </html>

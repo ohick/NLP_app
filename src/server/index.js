@@ -17,11 +17,6 @@ app.use(cors());
 const port = 3000;
 app.listen(port, () => console.log(`Listening on port ${port}`))
 
-
-var textAPI = new AYLIENTextAPI({
-    application_id: "YOUR_APP_ID",
-    application_key: "YOUR_APP_KEY"
-  });
-
-
-  console.log(`Your API key is ${process.env.API_KEY}`);
+app.get('/', function (req, res) {
+    res.sendFile('dist/index.html', { root: __dirname + '/..' })
+})
