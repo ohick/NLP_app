@@ -20,3 +20,16 @@ app.listen(port, () => console.log(`Listening on port ${port}`))
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html', { root: __dirname + '/..' })
 })
+
+const textAPI = new AYLIENTextAPI({
+    application_id: process.env.API_ID,
+    application_key: process.env.API_KEY
+});
+
+textapi.sentiment({
+    'url': 'dada'//POST: url from the client
+}, function (error, response) {
+    if (error === null) {
+        console.log(response);
+    }
+});
