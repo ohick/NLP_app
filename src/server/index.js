@@ -1,5 +1,4 @@
 const dotenv = require('dotenv');
-
 dotenv.config();
 
 const express = require('express');
@@ -9,13 +8,13 @@ const AYLIENTextAPI = require('aylien_textapi');
 
 /* Dependencies and middelware */
 const app = express();
-app.use(express.static('dist'));
+app.use(express.static('src'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
 /* Local server */
-const port = 3000;
+const port = 8081;
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 app.get('/', (req, res) => {
@@ -27,15 +26,22 @@ const textAPI = new AYLIENTextAPI({
   application_key: process.env.API_KEY,
 });
 
+/* textAPI.sentiment({
+  url: req.body.url
+}, function(error, response) {
+  if (error === null) {
+    console.log(response);
+    res.send(response);
+  }
+}); */
+
 app.post('/add', (req, res) => {
-  /* console.log(req.body);
   textAPI.sentiment({
-    url: req.body,
+    url: req.body.url,
   }, (error, response) => {
     if (error === null) {
-      console.log(response);
+      //console.log(response);
       res.send(response);
-    }
-  });  */
-  alert('Hello')
+    } else {console.log(error);}
+  });
 });

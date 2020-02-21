@@ -1,10 +1,13 @@
+const result = document.getElementById('result');
+const resultText = document.getElementById('resultText');
+
 const postData = async (url = '', data = {}) => {
-  console.log("postData func");
   let res = await fetch(url, {
     method: 'POST',
     credentials: 'same-origin',
     headers: {
-      'Content-type': 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
     },
     body: JSON.stringify(data),
   });
@@ -16,26 +19,20 @@ const postData = async (url = '', data = {}) => {
   }
 };
 
-const result = document.getElementById('result');
-const resultText = document.getElementById('resultText');
-
 function handleSubmit(event) {
-  console.log("handleSubmit");
   event.preventDefault();
   const formURL = document.getElementById('url').value;
   if (Client.urlCheck(formURL)) {
-    postData('/add', formURL)
+    postData('http://localhost:8081/add', {url: formURL,})
       .then(postedData => {
-        console.log(postedData);
-        resultText.innerHTML = postedData;
-        //result.innerHTML = postedData.polarity;
+        resultText.innerHTML = postedData.text;
+        result.innerHTML = postedData.polarity;
       });
   } else {
-    result.innerHTML = 'Please enter a valid zip code.';
+    result.innerHTML = 'Please enter a valid url.';
   }
-}
+};
 
 export { 
-  handleSubmit,
-  postData
+  handleSubmit
 }
