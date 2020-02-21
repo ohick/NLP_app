@@ -1,7 +1,6 @@
-import { urlCheck } from './urlChecker';
-
 const postData = async (url = '', data = {}) => {
-  const res = await fetch(url, {
+  console.log("postData func");
+  let res = await fetch(url, {
     method: 'POST',
     credentials: 'same-origin',
     headers: {
@@ -16,19 +15,27 @@ const postData = async (url = '', data = {}) => {
     console.log('Error', error);
   }
 };
+
 const result = document.getElementById('result');
+const resultText = document.getElementById('resultText');
 
 function handleSubmit(event) {
+  console.log("handleSubmit");
   event.preventDefault();
   const formURL = document.getElementById('url').value;
-  if (urlCheck(formURL)) {
-    postData('/postURL', formURL)
-      .then((postback) => {
-        result.innerHTML = postback;
+  if (Client.urlCheck(formURL)) {
+    postData('/add', formURL)
+      .then(postedData => {
+        console.log(postedData);
+        resultText.innerHTML = postedData;
+        //result.innerHTML = postedData.polarity;
       });
   } else {
     result.innerHTML = 'Please enter a valid zip code.';
-  };
-};
+  }
+}
 
-result.addEventListener('click', handleSubmit());
+export { 
+  handleSubmit,
+  postData
+}

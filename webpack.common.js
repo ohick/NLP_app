@@ -2,19 +2,20 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './src/index.js',
-  /* output: {
+  entry: './src/client/index.js',
+  output: {
     libraryTarget: 'var',
-    library: 'Client',
-  }, */
+    library: 'Client'
+  },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: ['babel-loader', 'eslint-loader'],
+        loader: 'babel-loader',
       },
       {
         test: /\.scss$/,
@@ -25,7 +26,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/client/view/index.html',
-      filename: './index.html',
+      //filename: './index.html',
     }),
     new CleanWebpackPlugin({
       // Simulate the removal of files
@@ -35,6 +36,7 @@ module.exports = {
       // Automatically remove all unused webpack assets on rebuild
       cleanStaleWebpackAssets: true,
       protectWebpackAssets: false,
-    }),
+    })//,
+    //new MiniCssExtractPlugin({filename: '[name].css'}),
   ],
 };

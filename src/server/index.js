@@ -27,7 +27,8 @@ const textAPI = new AYLIENTextAPI({
   application_key: process.env.API_KEY,
 });
 
-app.post('/postURL', (req, res) => {
+app.post('/add', (req, res) => {
+  /* console.log(req.body);
   textAPI.sentiment({
     url: req.body,
   }, (error, response) => {
@@ -35,5 +36,6 @@ app.post('/postURL', (req, res) => {
       console.log(response);
       res.send(response);
     }
-  });
+  });  */
+  alert('Hello')
 });
