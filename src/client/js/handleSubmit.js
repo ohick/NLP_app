@@ -19,19 +19,21 @@ const postData = async (url = '', data = {}) => {
   }
 };
 
-function handleSubmit(event) {
+const  handleSubmit = async (event) => {
   event.preventDefault();
+  result.classList.remove('blinking');
+  resultText.classList.remove('blinking');
   const formURL = document.getElementById('url').value;
   if (Client.urlCheck(formURL)) {
-    postData('http://localhost:8081/add', {url: formURL,})
-      .then(postedData => {
-        resultText.innerHTML = postedData.text;
-        result.innerHTML = postedData.polarity;
-      });
+    const response = await postData('http://localhost:8081/add', {url: formURL,})
+    resultText.innerHTML = response.text;
+    result.innerHTML = response.polarity;
   } else {
     result.innerHTML = 'Please enter a valid url.';
   }
 };
+
+
 
 export { 
   handleSubmit

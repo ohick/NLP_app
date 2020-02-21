@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Natural Language Processing app</title>
+    <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet"> 
 </head>
 <body>
     <header>
         <h1>Evaluate an article</h1>
     </header>
     <main>
-        <p>Enter URL</p>
         <form action="" method="POST" onsubmit="return Client.handleSubmit(event)">
-            <label for="url">URL </label><br />
+            <label for="url">Enter URL :</label><br />
             <textarea id="url"></textarea><br />
             <!--<input type="submit" value="Submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">-->
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit"><br />
         </form>
         <div class="result"> <!--Hidden before submit-->
-            <div class="result-title">Your text</div>
-            <div id="resultText" class="result-text"></div>
-            <div class="result-title">Result:</div>
-            <div id="result" class="result-table"></div><!--insert span class label dynamically-->
+            <div class="result-title">Your text :</div>
+            <div id="resultText" class="result-text blinking"></div>
+            <div class="result-title">Result :</div>
+            <div id="result" class="result-table blinking"></div><!--insert span class label dynamically-->
         </div>
     </main>
     <footer>
