@@ -8,8 +8,8 @@ const AYLIENTextAPI = require('aylien_textapi');
 
 /* Dependencies and middelware */
 const app = express();
-app.use(express.static('src'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('dist'));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -25,15 +25,6 @@ const textAPI = new AYLIENTextAPI({
   application_id: process.env.API_ID,
   application_key: process.env.API_KEY,
 });
-
-/* textAPI.sentiment({
-  url: req.body.url
-}, function(error, response) {
-  if (error === null) {
-    console.log(response);
-    res.send(response);
-  }
-}); */
 
 app.post('/add', (req, res) => {
   textAPI.sentiment({
