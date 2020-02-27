@@ -1,6 +1,7 @@
 const result = document.getElementById('result');
 const resultText = document.getElementById('resultText');
 const resultTable = document.getElementById('resultTable');
+const resultConfidence = document.getElementById('resultConfidence');
 
 const postData = async (url = '', data = {}) => {
   let res = await fetch(url, {
@@ -26,9 +27,11 @@ const  handleSubmit = async (event) => {
   const formURL = document.getElementById('url').value;
   if (Client.urlCheck(formURL)) {
     const response = await postData('http://localhost:8081/add', {url: formURL,})
+    console.log(response);
     resultText.classList.remove('hidden');
     resultText.innerHTML = response.text;
-    result.innerHTML = response.polarity;
+    result.innerHTML = response.polarity  
+    resultConfidence.innerHTML = response.polarity_confidence;
     resultTable.classList.remove('hidden');
   } else {
     result.innerHTML = 'Please enter a valid url.';
@@ -36,7 +39,6 @@ const  handleSubmit = async (event) => {
     resultText.classList.add('hidden');
   }
 };
-
 
 
 export { 

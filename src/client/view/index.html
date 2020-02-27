@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Natural Language Processing app</title>
-    <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <h1>Evaluate an article</h1>
@@ -17,24 +19,31 @@
             <!--<input type="submit" value="Submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">-->
             <input type="submit" value="Submit"><br />
         </form>
-        <div id="resultTable" class="result hidden"> <!--Hidden before submit-->
+        <div id="resultTable" class="result hidden">
+            <!--Hidden before submit-->
             <div class="result-title">Your text :</div>
             <div id="resultText" class="result-text"></div>
             <div class="result-title">Result :</div>
-            <div id="result" class="result-table"></div><!--insert span class label dynamically-->
+            <div id="result" class="result-table"></div>
+            <div class="result-title">Confidence :</div>
+            <div id="resultConfidence" class="result-table"></div>
+            <!--insert span class label dynamically-->
         </div>
     </main>
     <footer>
         <p></p>
     </footer>
     <script>
-        // Check that service workers are supported
         if ('serviceWorker' in navigator) {
-            // Use the window load event to keep the page load performant
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js');
-            });
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(function (registration) {
+                    console.log('Registration successful, scope is:', registration.scope);
+                })
+                .catch(function (error) {
+                    console.log('Service worker registration failed, error:', error);
+                });
         }
-    </script>  
+    </script>
 </body>
+
 </html>
