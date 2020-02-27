@@ -14,18 +14,18 @@ Project 4 of the Udacity Front-end Nanodegree, using webpack.
     API_ID='xxx'
     API_KEY='xxx'
     ```
-4. To build webpack : 
+4. Run the build : 
     ```
     $ npm run build-prod
     ```
-5. To run the server:
+5. Run the server:
     ```
     $ npm start
     ```
 
 ## Running the tests
 
-To run the tests: 
+Run the tests: 
     ```
     $ npm run test
     ```
